@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Rubik:500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='basic.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename=link + '.css') }}">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+        <title>Všechnomožné.cz</title>
+    </head>
+    <body class="is-dimmed">
+        <nav>
+            <a href="{{ url_for('knihy') }}" class="button">Knihy</a>
+            <a href="{{ url_for('knihytr') }}" class="button" style="left: 120px;">KnihyTR</a>
+            <a href="{{ url_for('statistiky') }}" class="button" style="left: 240px;">Statistiky</a>
+            <a href="{{ url_for('slovicka') }}" class="button" style="left: 360px;">Slovíčka</a>
+            <h1>Knihy</h1>
+        </nav>
+    {% block content %}
+    {% endblock %}
+    </body>
+</html>

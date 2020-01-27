@@ -1,0 +1,129 @@
+{% extends "basic.html" %}
+{% block content %}
+<style>
+table {
+  border-collapse: collapse;
+  width: 15%;
+  margin-top: 50px;
+  margin-left: 4.5%;
+  text-align: center;
+  float: left;
+}
+
+table td:last-child {
+    width: 10%;
+    text-align: center;
+}
+
+td, th {
+  border: 0;
+  text-align: left;
+  padding: 8px;
+  font-weight: 500;
+}
+
+tr:nth-child(odd) {
+  background-color: #ad172a;
+  color: #FFFFFF;
+}
+tr:nth-child(even) {
+  background-color: #D91E36;
+  color: #FFFFFF;
+}
+</style>
+<table>
+    <tr>
+        <th>Typ</th>
+        <th>Počet</th>
+    </tr>
+    <tr>
+        <td>Přečtených knih</td>
+        <td>{{ Kniha.query.count() }}</td>
+    </tr>
+    <tr>
+        <td>Kniha To Read</td>
+        <td>{{ KnihaTR.query.count() }}</td>
+    </tr>
+</table>
+
+
+
+<table>
+    <tr>
+        <th>Žánr</th>
+        <th>Počet</th>
+    </tr>
+    {% for zanr in zanry %}
+        <tr>
+            <td>{{ zanr.zanr }}</td>
+            <td>{{ Kniha.query.filter_by(zanr=zanr.id).count() }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+
+<table>
+    <tr>
+        <th>Autor</th>
+        <th>Počet</th>
+    </tr>
+
+    {% for autor in autori %}
+        <tr>
+            <td>{{ autor.jmeno }}</td>
+            <td>{{ Kniha.query.filter_by(author=autor).count() }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+
+<table>
+    <tr>
+        <th>Typ</th>
+        <th>Počet</th>
+    </tr>
+
+    <tr>
+        <td>Fikce</td>
+        <td>{{ Kniha.query.filter_by(typ="Fikce").count() }}</td>
+    </tr>
+    <tr>
+        <td>Fakt</td>
+        <td>{{ Kniha.query.filter_by(typ="Fakt").count() }}</td>
+    </tr>
+    <tr>
+        <td>Těžké</td>
+        <td>{{ Kniha.query.filter_by(typ="Těžké").count() }}</td>
+    </tr>
+</table>
+
+
+<table>
+    <tr>
+        <th>Hodnocení</th>
+        <th>Počet</th>
+    </tr>
+
+    {% for i in range(1, 6) %}
+        <tr>
+            <td>{{ "★"*i }}</td>
+            <td>{{ Kniha.query.filter_by(hodnoceni=i).count() }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+
+<table>
+    <tr>
+        <th>Období</th>
+        <th>Počet</th>
+    </tr>
+
+    {% for obdobi in obdobis.keys() %}
+        <tr>
+            <td>{{ obdobi }}</td>
+            <td>{{ Kniha.query.filter(Kniha.datum_precteni>=obdobis[obdobi][0], Kniha.datum_precteni<=obdobis[obdobi][1]).count() }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "basic.html" %}
+{% block content %}
+
+<form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <div class="input-div">
+        {% if form.anglicky.errors %}
+            <div>
+                {% for error in form.anglicky.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                {{ form.anglicky(class="input-main", type="text", placeholder="Slovíčko...", value=jmeno, id="js-search") }}
+            </div>
+        {% endif %}
+    </div>
+    <div class="search" style="display: none;">
+        {{ form.submit() }}
+    </div>
+</form>
+<div>
+    <table>
+        <tr style="height: 50px; background: #FFFFFF; color: #D91E36;">
+            <th>Anglicky</th>
+            <th style="text-align: right;">Česky</th>
+        </tr>
+        {% for slovicko in slovicka %}
+            <tr>
+                <td>{{ slovicko.anglicky }}</td>
+                <td>{{ slovicko.cesky }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock content %}

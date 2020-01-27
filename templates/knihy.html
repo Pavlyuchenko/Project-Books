@@ -1,0 +1,98 @@
+{% extends "basic.html" %}
+{% block content %}
+<div class="buttons">
+    <div class="dropdown">
+      <button class="dropbtn">Hodnocení</button>
+      <div class="dropdown-content">
+          {% for i in range(1, 6) %}
+          <a href="{{ url_for('knihy', typ=i) }}" style="color: #ffe200;">{{ "★"*i }}</a>
+          {% endfor %}
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Typ</button>
+      <div class="dropdown-content">
+          <a href="{{ url_for('knihy', typ=6) }}">Fikce</a>
+          <a href="{{ url_for('knihy', typ=7) }}">Fakt</a>
+          <a href="{{ url_for('knihy', typ=8) }}">Těžké</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Maturita</button>
+      <div class="dropdown-content">
+          <a href="{{ url_for('knihy', typ=9) }}">Ano</a>
+          <a href="{{ url_for('knihy', typ=10) }}">Ne</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Autor</button>
+      <div class="dropdown-content">
+          {% for autor in autors %}
+            <a href="{{ url_for('knihy', typ=11, text=autor.id) }}">{{ autor.jmeno }}</a>
+          {% endfor %}
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Žánr</button>
+      <div class="dropdown-content">
+          {% for zanr in zanry %}
+            <a href="{{ url_for('knihy', typ=12, text=zanr.id) }}">{{ zanr.zanr }}</a>
+          {% endfor %}
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Období</button>
+      <div class="dropdown-content">
+          {% for obdobi in obdobis %}
+            <a href="{{ url_for('knihy', typ=13, text=obdobi) }}">{{ obdobi }}</a>
+          {% endfor %}
+      </div>
+    </div>
+
+    <div class="dropdown">
+        <a href="{{ url_for('knihy') }}"><button class="dropbtn" style="cursor: pointer;">Zrušit filtr</button></a>
+    </div>
+</div>
+
+<div id="content">
+    {% for kniha in knihy %}
+        <div class="kniha">
+            <a href="{{ kniha.databaze_knih }}" target="_blank">
+                <img src="{{ kniha.obrazek }}" alt="{{ kniha.jmeno }}" width="250" height="389">
+            </a>
+            <div class="text">
+                 <a href="{{ url_for('kniha', kniha_id=kniha.id) }}">
+                     <h2>{{ kniha.jmeno|safe }}</h2>
+                 </a>
+                 <a href="{{ url_for('autor', autor_id=kniha.autor) }}">
+                     <small>{{ kniha.author.jmeno }}</small>
+                </a>
+                     <p style="margin-top: 30px;"><span style="color: #D91E36;">Hlavní téma:</span> {{ kniha.hlavni_tema|safe }}</p>
+                     <p><span style="color: #D91E36;">Časoprostor:</span> {{ kniha.casoprostor|safe }}</p>
+                     <p><span style="color: #D91E36;">Žánr:</span> {{ kniha.zanr_id.zanr|safe }}</p>
+                     <p><span style="color: #D91E36;">Datum:</span> {{ kniha.datum_precteni.strftime('%d. %m. %Y')|safe }}</p>
+                     <p><span style="color: #D91E36;">Typ:</span> {{ kniha.typ|safe }}</p>
+                     <div class="rating">
+                        <input type="radio" id="1" {% if kniha.hodnoceni=='5'%}checked{% endif %}>
+                        <label for="1"></label>
+                        <input type="radio" id="2" {% if kniha.hodnoceni=='4'%}checked{% endif %}>
+                        <label for="2"></label>
+                        <input type="radio" id="3" {% if kniha.hodnoceni=='3'%}checked{% endif %}>
+                        <label for="3"></label>
+                        <input type="radio" id="4" {% if kniha.hodnoceni=='2'%}checked{% endif %}>
+                        <label for="4"></label>
+                        <input type="radio" id="5" {% if kniha.hodnoceni=='1'%}checked{% endif %}>
+                        <label for="5"></label>
+                    </div>
+                 </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<a href="{{ url_for('nova_kniha') }}"><div id="nova_kniha">+</div></a>
+{% endblock %}

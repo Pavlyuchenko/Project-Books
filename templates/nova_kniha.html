@@ -1,0 +1,588 @@
+{% extends "basic.html" %}
+{% block content %}
+<form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <h3>Nová kniha</h3>
+
+
+    <div class="input-div">
+        {% if form.jmeno.errors %}
+            <div>
+                {% for error in form.jmeno.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Jméno</label>
+                {{ form.jmeno(class="input-main", type="text", placeholder="Jméno", value=jmeno) }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.autor.errors %}
+            <div>
+                {% for error in form.autor.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Autor</label>
+                {{ form.autor(class="input-main", type="text", placeholder="Autor") }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.hlavni_tema.errors %}
+            <div>
+                {% for error in form.hlavni_tema.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Hlavní téma</label>
+                {{ form.hlavni_tema(class="input-main", type="text", placeholder="Hlavní téma") }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.datum_precteni.errors %}
+            <div>
+                {% for error in form.datum_precteni.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Datum přečtení</label>
+                {{ form.datum_precteni(class="input-main", type="text", placeholder="DD. MM. YYYY", value=date) }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.casoprostor.errors %}
+            <div>
+                {% for error in form.casoprostor.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Časoprostor</label>
+                {{ form.casoprostor(class="input-main", type="text", placeholder="Časoprostor") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.zanr.errors %}
+            <div>
+                {% for error in form.zanr.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Žánr</label>
+                {{ form.zanr(class="input-main", type="text", placeholder="Žánr") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.kompozice.errors %}
+            <div>
+                {% for error in form.kompozice.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Kompozice</label>
+                {{ form.kompozice(class="input-textarea", type="text", placeholder="Kompozice") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.jazyk.errors %}
+            <div>
+                {% for error in form.jazyk.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Jazyk</label>
+                {{ form.jazyk(class="input-textarea", type="text", placeholder="Jazyk") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.dej.errors %}
+            <div>
+                {% for error in form.dej.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Děj</label>
+                {{ form.dej(class="input-textarea", type="text", placeholder="Děj") }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.hodnoceni.errors %}
+            <div>
+                {% for error in form.hodnoceni.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Hodnocení</label>
+                {{ form.hodnoceni(class="input-select") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <!--  Nová sekce  -->
+    <h3>Rozbor díla k maturitě</h3>
+
+    <div class="input-div">
+        {% if form.motiv.errors %}
+            <div>
+                {% for error in form.motiv.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Motiv</label>
+                {{ form.motiv(class="input-main", type="text", placeholder="Motiv") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.kompozicni_vystavba.errors %}
+            <div>
+                {% for error in form.kompozicni_vystavba.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Kompoziční Výstavba</label>
+                {{ form.kompozicni_vystavba(class="input-main", type="text", placeholder="Kompoziční Výstavba") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.literarni_druh.errors %}
+            <div>
+                {% for error in form.literarni_druh.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Literární Druh</label>
+                {{ form.literarni_druh(class="input-main", type="text", placeholder="Literární Druh") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.literarni_zanr.errors %}
+            <div>
+                {% for error in form.literarni_zanr.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Literární Žánr</label>
+                {{ form.literarni_zanr(class="input-main", type="text", placeholder="Literární Žánr") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.vypravec.errors %}
+            <div>
+                {% for error in form.vypravec.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Vypravěč</label>
+                {{ form.vypravec(class="input-main", type="text", placeholder="Vypravěč") }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.vypraveci_zpusoby.errors %}
+            <div>
+                {% for error in form.vypraveci_zpusoby.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Vypravěcí Způsoby</label>
+                {{ form.vypraveci_zpusoby(class="input-main", type="text", placeholder="Vypravěcí Způsoby") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.typy_promluv.errors %}
+            <div>
+                {% for error in form.typy_promluv.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Typy Promluv</label>
+                {{ form.typy_promluv(class="input-main", type="text", placeholder="Typy Promluv") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.versova_vystavba.errors %}
+            <div>
+                {% for error in form.versova_vystavba.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Veršová Výstavba</label>
+                {{ form.versova_vystavba(class="input-main", type="text", placeholder="Veršová Výstavba") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.kontext_autorovy_tvorby.errors %}
+            <div>
+                {% for error in form.kontext_autorovy_tvorby.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Kontext Autorovy Tvorby</label>
+                {{ form.kontext_autorovy_tvorby(class="input-main", type="text", placeholder="Kontext Autorovy Tvorby") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.literarni_kontext.errors %}
+            <div>
+                {% for error in form.literarni_kontext.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Literární Kontext</label>
+                {{ form.literarni_kontext(class="input-main", type="text", placeholder="Literární Kontext") }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.postava1.errors %}
+            <div>
+                {% for error in form.postava1.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Postava 1</label>
+                {{ form.postava1(class="input-main", type="text", placeholder="Postava 1") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.postava1p.errors %}
+            <div>
+                {% for error in form.postava1p.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Postava 1 Popis</label>
+                {{ form.postava1p(class="input-textarea", type="text", placeholder="Postava 1") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.postava2.errors %}
+            <div>
+                {% for error in form.postava2.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Postava 2</label>
+                {{ form.postava2(class="input-main", type="text", placeholder="Postava 2") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.postava2p.errors %}
+            <div>
+                {% for error in form.postava2p.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Postava 2 Popis</label>
+                {{ form.postava2p(class="input-textarea", type="text", placeholder="Postava 2") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.postava3.errors %}
+            <div>
+                {% for error in form.postava3.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Postava 3</label>
+                {{ form.postava3(class="input-main", type="text", placeholder="Postava 3") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.postava3p.errors %}
+            <div>
+                {% for error in form.postava3p.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Postava 3 Popis</label>
+                {{ form.postava3p(class="input-textarea", type="text", placeholder="Postava 3") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.postava4.errors %}
+            <div>
+                {% for error in form.postava4.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Postava 4</label>
+                {{ form.postava4(class="input-main", type="text", placeholder="Postava 4") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.postava4p.errors %}
+            <div>
+                {% for error in form.postava4p.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Postava 4 Popis</label>
+                {{ form.postava4p(class="input-textarea", type="text", placeholder="Postava 4") }}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="input-div">
+        {% if form.postava5.errors %}
+            <div>
+                {% for error in form.postava5.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Postava 5</label>
+                {{ form.postava5(class="input-main", type="text", placeholder="Postava 5") }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.postava5p.errors %}
+            <div>
+                {% for error in form.postava5p.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Postava 5 Popis</label>
+                {{ form.postava5p(class="input-textarea", type="text", placeholder="Postava 5") }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.postava6.errors %}
+            <div>
+                {% for error in form.postava6.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Postava 6</label>
+                {{ form.postava6(class="input-main", type="text", placeholder="Postava 6") }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.postava6p.errors %}
+            <div>
+                {% for error in form.postava6p.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Postava 6 Popis</label>
+                {{ form.postava6p(class="input-textarea", type="text", placeholder="Postava 6") }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.postava7.errors %}
+            <div>
+                {% for error in form.postava7.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Postava 7</label>
+                {{ form.postava7(class="input-main", type="text", placeholder="Postava 7") }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.postava7p.errors %}
+            <div>
+                {% for error in form.postava7p.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Postava 7 Popis</label>
+                {{ form.postava7p(class="input-textarea", type="text", placeholder="Postava 7") }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.obrazek.errors %}
+            <div>
+                {% for error in form.obrazek.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Obrázek</label>
+                {{ form.obrazek(class="input-main", type="text", placeholder="Obrázek", value=obrazek) }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.typ.errors %}
+            <div>
+                {% for error in form.typ.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label>Typ</label>
+                {{ form.typ(class="input-main", type="text", placeholder="Přezdívka") }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.maturita.errors %}
+            <div>
+                {% for error in form.maturita.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label class="container">Maturita
+                    {{ form.maturita(class="input-check") }}
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="login-submit">
+        {{ form.submit() }}
+    </div>
+</form>
+{% endblock content %}

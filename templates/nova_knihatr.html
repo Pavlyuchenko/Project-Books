@@ -1,0 +1,69 @@
+{% extends "basic.html" %}
+{% block content %}
+<form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <h3>Nová kniha</h3>
+
+
+    <div class="input-div">
+        {% if form.jmeno.errors %}
+            <div>
+                {% for error in form.jmeno.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label class="label">Jméno</label>
+                {{ form.jmeno(class="input-main", type="text", placeholder="Jméno") }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.typ.errors %}
+            <div>
+                {% for error in form.typ.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <label class="label">Typ</label>
+            <div class="holder">
+                {% for subfield in form.typ %}
+                    <label class="container" style="cursor: pointer;">{{ subfield.label }}
+                        {% if loop.index == 1 %}
+                            {{ subfield(checked=True) }}
+                        {% else %}
+                            {{ subfield }}
+                        {% endif %}
+                        <span class="checkmark"></span>
+                    </label>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="input-div">
+        {% if form.obrazek.errors %}
+            <div>
+                {% for error in form.obrazek.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="input">
+                <label class="label">Obrázek</label>
+                {{ form.obrazek(class="input-main", type="text", placeholder="Obrázek") }}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div class="login-submit">
+        {{ form.submit() }}
+    </div>
+</form>
+{% endblock content %}

@@ -1,0 +1,218 @@
+{% extends "basic.html" %}
+{% block content %}
+<div id="content">
+    <div class="kniha">
+        <div class="image">
+            <a href="{{ kniha.databaze_knih }}" target="_blank">
+                <img src="{{ kniha.obrazek }}" alt="{{ kniha.jmeno }}" width="250" height="389">
+            </a>
+        </div>
+        <div class="text">
+            <a href="{{ url_for('kniha', kniha_id=kniha.id) }}">
+                <h2>{{ kniha.jmeno|safe }}</h2>
+            </a>
+            <a href="{{ url_for('autor', autor_id=kniha.autor) }}">
+                <small>{{ kniha.author.jmeno|safe }}</small>
+            </a>
+            <p style="margin-top: 30px;"><span style="color: #D91E36;">Hlavní téma:</span> {{ kniha.hlavni_tema|safe }}</p>
+            <p><span style="color: #D91E36;">Časoprostor:</span> {{ kniha.casoprostor|safe }}</p>
+            <p><span style="color: #D91E36;">Žánr:</span> {{ kniha.zanr_id.zanr|safe }}</p>
+            <p><span style="color: #D91E36;">Datum:</span> {{ kniha.datum_precteni.strftime('%d. %m. %Y')|safe }}</p>
+            <p><span style="color: #D91E36;">Typ:</span> {{ kniha.typ|safe }}</p>
+            <div class="rating">
+                <input type="radio" id="1" {% if kniha.hodnoceni=='5'%}checked{% endif %}>
+                <label for="1"></label>
+                <input type="radio" id="2" {% if kniha.hodnoceni=='4'%}checked{% endif %}>
+                <label for="2"></label>
+                <input type="radio" id="3" {% if kniha.hodnoceni=='3'%}checked{% endif %}>
+                <label for="3"></label>
+                <input type="radio" id="4" {% if kniha.hodnoceni=='2'%}checked{% endif %}>
+                <label for="4"></label>
+                <input type="radio" id="5" {% if kniha.hodnoceni=='1'%}checked{% endif %}>
+                <label for="5"></label>
+            </div>
+            </a>
+        </div>
+    </div>
+    <div class="content">
+        {% if kniha.dej != None %}
+            <div class="big">
+                <div class="wrapper">
+                    <span style="color: #D91E36;"><span style="color: #C4C4C4;">______</span>Děj</span>
+                </div>
+                <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                    {{ kniha.dej|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if kniha.kompozice != None and kniha.kompozice != ""  %}
+            <div class="big">
+                <div class="wrapper">
+                    <span style="color: #D91E36;">Kompozice</span>
+                </div>
+                <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                    {{ kniha.kompozice|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if kniha.jazyk != None  and kniha.jazyk != "" %}
+            <div class="big">
+                <div class="wrapper">
+                    <span style="color: #D91E36;"><span style="color: #C4C4C4;">__</span>Jazyk</span>
+                </div>
+                <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                    {{ kniha.jazyk|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+
+        {% if kniha.tema != None  and kniha.tema != "" %}
+            <div class="big">
+                <div class="wrapper">
+                    <span style="color: #D91E36;"><span style="color: #C4C4C4;">__</span>Téma</span>
+                </div>
+                <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                    {{ kniha.tema|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if kniha.motiv != None  and kniha.motiv != "" %}
+            <div class="big">
+                <div class="wrapper">
+                    <span style="color: #D91E36;"><span style="color: #C4C4C4;">__</span>Motiv</span>
+                </div>
+                <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                    {{ kniha.motiv|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if kniha.casoprostor != None  and kniha.casoprostor != "" %}
+            <div class="big">
+                <div class="wrapper">
+                    <span style="color: #D91E36;"><span style="color: #C4C4C4;">__</span>Časoprostor</span>
+                </div>
+                <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                    {{ kniha.casoprostor|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if kniha.kompozicni_vystavba != None  and kniha.kompozicni_vystavba != "" %}
+            <div class="big">
+                <div class="wrapper">
+                    <span style="color: #D91E36;"><span style="color: #C4C4C4;">__</span>Kompoziční výstavba</span>
+                </div>
+                <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                    {{ kniha.kompozicni_vystavba|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if kniha.literarni_druh != None  and kniha.literarni_druh != "" %}
+            <div class="big">
+                <div class="wrapper">
+                    <span style="color: #D91E36;"><span style="color: #C4C4C4;">__</span>Literární Druh</span>
+                </div>
+                <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                    {{ kniha.literarni_druh|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if kniha.literarni_zanr != None  and kniha.literarni_zanr != "" %}
+            <div class="big">
+                <div class="wrapper">
+                    <span style="color: #D91E36;"><span style="color: #C4C4C4;">__</span>Literární Žánr</span>
+                </div>
+                <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                    {{ kniha.literarni_zanr|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if kniha.vypravec != None  and kniha.vypravec != "" %}
+            <div class="big">
+                <div class="wrapper">
+                    <span style="color: #D91E36;"><span style="color: #C4C4C4;">__</span>Vypravěč</span>
+                </div>
+                <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                    {{ kniha.vypravec|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if kniha.vypraveci_zpusoby != None  and kniha.vypraveci_zpusoby != "" %}
+            <div class="big">
+                <div class="wrapper">
+                    <span style="color: #D91E36;"><span style="color: #C4C4C4;">__</span>Vypravěcí Způsoby</span>
+                </div>
+                <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                    {{ kniha.vypraveci_zpusoby|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if kniha.typy_promluv != None  and kniha.typy_promluv != "" %}
+            <div class="big">
+                <div class="wrapper">
+                    <span style="color: #D91E36;"><span style="color: #C4C4C4;">__</span>Typy Promluv</span>
+                </div>
+                <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                    {{ kniha.typy_promluv|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if kniha.versova_vystavba != None  and kniha.versova_vystavba != "" %}
+            <div class="big">
+                <div class="wrapper">
+                    <span style="color: #D91E36;"><span style="color: #C4C4C4;">__</span>Veršová Výstavba</span>
+                </div>
+                <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                    {{ kniha.versova_vystavba|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if kniha.kontext_autorovy_tvorby != None  and kniha.kontext_autorovy_tvorby != "" %}
+            <div class="big">
+                <div class="wrapper">
+                    <span style="color: #D91E36;"><span style="color: #C4C4C4;">__</span>Kontext Autorovy Tvorby</span>
+                </div>
+                <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                    {{ kniha.kontext_autorovy_tvorby|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if kniha.literarni_kontext != None  and kniha.literarni_kontext != "" %}
+            <div class="big">
+                <div class="wrapper">
+                    <span style="color: #D91E36;"><span style="color: #C4C4C4;">__</span>Literární Kontext</span>
+                </div>
+                <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                    {{ kniha.literarni_kontext|safe }}
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="big">
+            <div class="wrapper">
+                <span style="color: #D91E36;">Postavy</span>
+            </div>
+            <div class="wrapper" style="width: 70%; margin-left: 20px;">
+                {% for postava in postavy %}
+                    <h5>{{ postava.jmeno|safe }}</h5>
+                    <p>{{ postava.popis|safe }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<a href="{{ url_for('nova_kniha') }}"><div id="nova_kniha">+</div></a>
+{% endblock %}

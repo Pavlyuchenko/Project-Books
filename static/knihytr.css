@@ -1,0 +1,81 @@
+#wrapper{
+    width: 100%;
+    margin-top: 50px;
+}
+
+h4{
+    font-weight: 500;
+    font-size: 34px;
+    color: #D91E36;
+}
+
+h2{
+    color: #D91E36;
+    font-weight: 500;
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+#fikce{
+    float: left;
+    width: 33.3%;
+    text-align: center;
+}
+
+#fakt{
+    float: left;
+    width: 33.3%;
+    text-align: center;
+}
+
+#tezke{
+    float: left;
+    width: 33.3%;
+    text-align: center;
+}
+
+#nova_kniha{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #D91E36;
+    width: 50px;
+    height: 50px;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 30px;
+    border-radius: 50px;
+    line-height: 50px;
+    transition: .2s;
+}
+
+#nova_kniha:hover{
+    background: #bd1a2f;
+}
+
+.kniha{
+    position: relative;
+    margin-bottom: 100px;
+}
+
+.link_buttons{
+    display: table;
+    margin: 0 auto;
+    width: 248.5px;
+    height: 26px;
+}
+
+.link_btn{
+    width: calc(33.3333333333333333% - 6px);
+    background: #D91E36;
+    border: 3px solid #bd1a2f;
+    height: 20px;
+    float: left;
+    color: #FFFFFF;
+    transition: .2s;
+}
+
+.link_btn:hover{
+    background: #bd1a2f;
+}

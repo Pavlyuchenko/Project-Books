@@ -1,0 +1,52 @@
+html{
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    background: #C4C4C4;
+}
+
+nav{
+    text-align: center;
+    color: #FFFFFF;
+        background: #D91E36;
+    margin: 0;
+    padding: 0px;
+    height: 50px;
+    line-height: 50px;
+    vertical-align: center;
+}
+
+h1{
+    margin: 0;
+    padding: 0;
+    padding-top: 0px;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.button{
+    position: absolute;
+    color: #FFFFFF;
+    left: 20px;
+    height: 40px;
+    top: 0px;
+    width: 90px;
+    border-radius: 5px;
+    font-size: 20px;
+    vertical-align: center;
+    margin-top: 2px;
+    padding-bottom: 5px;
+}
+
+.button:hover{
+    background: #bd1a2f;
+}
+
+a{
+    text-decoration: none;
+}

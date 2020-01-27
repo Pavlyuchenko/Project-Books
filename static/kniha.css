@@ -1,0 +1,151 @@
+img{
+    float: left;
+}
+
+.text{
+    float: left;
+}
+
+a{
+    text-decoration: none;
+    color: #46393D;
+}
+
+.kniha{
+    clear: both;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+    padding-left: 200px;
+    position: relative;
+    overflow: auto;
+    overflow-y: hidden;
+}
+
+h2{
+    color: #D91E36;
+    font-weight: 500;
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+    margin-left: 40px;
+    transition: .2s;
+}
+
+h2:hover{
+    color: #bd1a2f;
+}
+
+small{
+    color: #757575;
+    margin-left: 40px;
+    font-size: 16px;
+    transition: .2s;
+}
+
+small:hover{
+    color: #5c5c5c;
+}
+
+p{
+    margin: 0;
+    margin-top: 15px;
+    margin-left: 40px;
+    font-size: 23px;
+    color: #46393D;
+}
+
+.rating {
+    margin: 50px auto;
+    width: 250px;
+    position: absolute;
+    left: 480px;
+    top: 300px;
+    opacity: 1;
+}
+
+.rating > * {
+    float: right;
+}
+
+.rating label {
+    height: 40px;
+    width: 20%;
+    display: block;
+    position: relative;
+    transition: .3s;
+}
+
+.rating label:after {
+    transition: all 0.4s ease-out;
+    -webkit-font-smoothing: antialiased;
+    position: absolute;
+    content: "☆";
+    color: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 50px;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating input:checked + label:after,
+.rating input:checked ~ label:after {
+    content: "★";
+    color: #ffe200;
+    text-shadow: 0 0 40px #ffe200, 0 0 50px #ffe200;
+}
+
+#nova_kniha{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #D91E36;
+    width: 50px;
+    height: 50px;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 30px;
+    border-radius: 50px;
+    line-height: 50px;
+    transition: .2s;
+}
+
+#nova_kniha:hover{
+    background: #bd1a2f;
+}
+
+.content{
+    text-align:center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.big > div{
+    vertical-align:top;
+    display:inline-block;
+}
+
+.wrapper{
+    font-size: 22px;
+    color: #46393D;
+    text-align: justify;
+}
+
+.big{
+    text-align:center;
+    margin-top: 50px;
+}
+
+h5{
+    color: #D91E36;
+    font-weight: 500;
+    font-size: 25px;
+    margin-bottom: 0;
+}
