@@ -19,6 +19,7 @@
             <p><span style="color: #D91E36;">Žánr:</span> {{ kniha.zanr_id.zanr|safe }}</p>
             <p><span style="color: #D91E36;">Datum:</span> {{ kniha.datum_precteni.strftime('%d. %m. %Y')|safe }}</p>
             <p><span style="color: #D91E36;">Typ:</span> {{ kniha.typ|safe }}</p>
+            <div id="pdf"><a href="{{ url_for('pdf') }}" style="color: #FFFFFF;">Stáhnout jako PDF</a></div>
             <div class="rating">
                 <input type="radio" id="1" {% if kniha.hodnoceni=='5'%}checked{% endif %}>
                 <label for="1"></label>

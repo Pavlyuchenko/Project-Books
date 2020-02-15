@@ -149,3 +149,27 @@ h5{
     font-size: 25px;
     margin-bottom: 0;
 }
+
+#pdf{
+    position: absolute;
+    left: 780px;
+    top: 360px;
+    background-color: #D91E36;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: .1s;
+}
+
+#pdf:hover{
+    background-color: #a81629;
+}
+
+#pdf:active{
+    transform: translateY(4px);
+}
